@@ -91,16 +91,39 @@ VALUES ('2016-02-10', 99.99, 1),
         
 	-- LEFT JOIN WITH GROUP BY
     
-    USE shop;
+		USE shop;
+		
+		SELECT 
+			first_name, 
+			last_name, 
+			IFNULL(SUM(amount), 0) AS money_spent
+		FROM
+			customers
+		LEFT JOIN
+			orders ON customers.id = orders.customer_id
+		GROUP BY first_name , last_name;
     
-    SELECT 
-		first_name, 
-		last_name, 
-		IFNULL(SUM(amount), 0) AS money_spent
-	FROM
-		customers
-	LEFT JOIN
-		orders ON customers.id = orders.customer_id
-	GROUP BY first_name , last_name;
+    -- ON DELETE CASCADE
+    
+		DROP TABLE orders;
+		DROP TABLE customers;
+        
+        CREATE TABLE customers (
+		id INT PRIMARY KEY AUTO_INCREMENT,
+		first_name VARCHAR(50),
+		last_name VARCHAR(50),
+		email VARCHAR(50)
+		);
+        
+        CREATE TABLE orders (
+		id INT PRIMARY KEY AUTO_INCREMENT,
+		order_date DATE,
+		amount DECIMAL(8 , 2 ),
+		customer_id INT,
+		FOREIGN KEY (customer_id)
+			REFERENCES customers (id)
+			ON DELETE CASCADE
+		);
+		
     
        
