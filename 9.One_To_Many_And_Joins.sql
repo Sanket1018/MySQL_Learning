@@ -88,4 +88,19 @@ VALUES ('2016-02-10', 99.99, 1),
 		orders
 			LEFT JOIN
 		customers ON orders.customer_id = customers.id;
+        
+	-- LEFT JOIN WITH GROUP BY
+    
+    USE shop;
+    
+    SELECT 
+		first_name, 
+		last_name, 
+		IFNULL(SUM(amount), 0) AS money_spent
+	FROM
+		customers
+	LEFT JOIN
+		orders ON customers.id = orders.customer_id
+	GROUP BY first_name , last_name;
+    
        
