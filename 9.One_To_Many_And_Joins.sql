@@ -70,4 +70,22 @@ VALUES ('2016-02-10', 99.99, 1),
 		orders ON orders.customer_id = customers.id
 	GROUP BY first_name , last_name
 	ORDER BY total;
+    
+    
+-- LEFT JOIN
+
+	SELECT 
+		first_name, last_name, order_date, amount
+	FROM
+		customers
+			LEFT JOIN
+		orders ON orders.customer_id = customers.id;
+ 
+ 
+	SELECT 
+		order_date, amount, first_name, last_name
+	FROM
+		orders
+			LEFT JOIN
+		customers ON orders.customer_id = customers.id;
        
