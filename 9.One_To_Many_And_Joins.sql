@@ -197,6 +197,38 @@ VALUES ('2016-02-10', 99.99, 1),
 		GROUP BY first_name
 		ORDER BY average DESC;
         
+        
+-- MANY TO MANY
+
+	CREATE TABLE reviewers 
+    (
+    id INT PRIMARY KEY NOT NULL ,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL
+    );
+    
+    CREATE TABLE series
+    (
+		id INT PRIMARY KEY AUTO_INCREMENT,
+        title VARCHAR(100),
+        released_year YEAR,
+        genre VARCHAR(100)
+    );
+    
+    CREATE TABLE reviews
+    (
+		id INT PRIMARY KEY,
+        rating DECIMAL(2,1),
+        series_id INT,
+        reviewer_id INT,
+        FOREIGN KEY (series_id) REFERENCES series(id),
+        FOREIGN KEY (reviewer_id) REFERENCES reviwer(id)
+    );
+	 
+		
+
+
+        
 				
 			
     
