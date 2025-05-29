@@ -300,6 +300,8 @@ INSERT INTO reviews(series_id, reviewer_id, rating) VALUES
     ORDER BY Avg_rating;
 	 
 	SELECT * FROM series;
+    SELECT * FROM reviewers;
+    SELECT * FROM reviews;
 		
 
 
