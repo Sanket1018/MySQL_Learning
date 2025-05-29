@@ -278,7 +278,28 @@ INSERT INTO reviews(series_id, reviewer_id, rating) VALUES
     SELECT * FROM reviewers;
     SELECT * FROM reviews;
 
+	--
+    
+    SELECT * FROM series
+    JOIN reviews 
+    ON series.id = reviews.series_id;
+    
+    SELECT 
+		title, rating
+	FROM
+		series
+        JOIN
+		reviews ON series.id = reviews.series_id;
+        
+	SELECT 
+		title, ROUND(avg(rating),2) AS 'Avg_rating'
+	FROM series 
+	JOIN reviews
+        ON series.id = reviews.series_id
+	GROUP BY title
+    ORDER BY Avg_rating;
 	 
+	SELECT * FROM series;
 		
 
 
