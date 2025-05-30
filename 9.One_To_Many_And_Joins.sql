@@ -312,6 +312,22 @@ INSERT INTO reviews(series_id, reviewer_id, rating) VALUES
     SELECT first_name,last_name,rating FROM reviewers JOIN reviews
     ON reviewers.id = reviews.reviewer_id;
     
+    -- Non-viewed reviews
+    
+    USE  TV_challenge;
+    SELECT * FROM series;
+    SELECT * FROM reviews;
+    
+    SELECT * FROM series LEFT JOIN reviews
+    ON series.id = reviews.series_id
+    WHERE rating IS NULL;
+    
+    SELECT title  AS unviewed_series 
+    FROM series LEFT JOIN reviews
+    ON series.id = reviews.series_id
+    WHERE rating IS NULL;
+    
+    
     
     
     
