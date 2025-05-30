@@ -302,6 +302,20 @@ INSERT INTO reviews(series_id, reviewer_id, rating) VALUES
 	SELECT * FROM series;
     SELECT * FROM reviewers;
     SELECT * FROM reviews;
+    
+    
+    -- 
+    
+    USE TV_challenge;
+    SHOW DATABASES;
+    
+    SELECT first_name,last_name,rating FROM reviewers JOIN reviews
+    ON reviewers.id = reviews.reviewer_id;
+    
+    
+    
+    
+	
 		
 
 
