@@ -66,6 +66,16 @@ SELECT * FROM series;
     full_reviews
 	GROUP BY released_year , genre , first_name WITH ROLLUP;
     
+-- SQL MODE 
+
+	-- To View Modes:
+	SELECT @@GLOBAL.sql_mode;
+	SELECT @@SESSION.sql_mode;
+	 
+	-- To Set Them:
+	SET GLOBAL sql_mode = 'modes';
+	SET SESSION sql_mode = 'modes';
+    
     
 
 	
